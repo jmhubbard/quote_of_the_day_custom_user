@@ -12,3 +12,7 @@ class Subscription(models.Model):
         unique_together = (
             ("user", "show"),
         )
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse("subscription-update", args=[self.id])

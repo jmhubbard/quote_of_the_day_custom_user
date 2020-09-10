@@ -4,16 +4,11 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<h2>User Signup</h2>
-<form action="/accounts/add/" method="POST">
-    {% csrf_token %}
+<h2>Subscription Form</h2>
+<form action=/subscriptions/ method="post">{% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Submit</button>
+    <input type="submit" value="Update">
 </form>
 {% endblock %}
-
-
-
-
 
 

@@ -7,4 +7,4 @@ from .forms import UserForm
 class UserCreate(CreateView):
     model = User
     form_class = UserForm
-    success_url = "/"
+    success_url = "/accounts/login/"
