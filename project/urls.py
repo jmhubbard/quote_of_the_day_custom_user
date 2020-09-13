@@ -18,13 +18,12 @@ from django.urls import path, include
 from users.views import UserCreate
 from django.views.generic.base import TemplateView
 from subscriptions.views import SubscriptionUpdate
+
 # from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls), #admin page
-    path('accounts/add/', UserCreate.as_view(), name='user-add'), #Create user page
-    # path('user/login/', auth_views.LoginView.as_view()),
-    path('accounts/', include('django.contrib.auth.urls')), #accounts/login = login page
-    path('monkey/', TemplateView.as_view(template_name='home.html'), name='home'), #Current homepage After logging it you will be redirectedhere
-    path('subscriptions/<int:pk>', SubscriptionUpdate.as_view(), name = 'subscription-update')
+    path('', TemplateView.as_view(template_name='project/home.html'), name='home'), #Current homepage After logging it you will be redirectedhere
+    path('subscriptions/', include('subscriptions.urls')),
+    path('accounts/', include('users.urls')),
 ]
