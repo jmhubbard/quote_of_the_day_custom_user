@@ -1,4 +1,4 @@
-{% extends 'users/base.html' %}
+{% extends 'project/base.html' %}
 
 
 {% block title %}Login{% endblock %}
@@ -10,7 +10,8 @@
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
-<p>this is a test</p>
+<h1 class="cover-heading">Login Page</h1>
+<p class="lead">Enter your infomation to sign in to your user preferencses page.</p>
  
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
