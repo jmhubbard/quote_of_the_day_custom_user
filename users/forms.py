@@ -5,6 +5,10 @@ from django.forms import ModelForm
 
 from .models import User, make_random_username
 
+from subscriptions.models import Subscription, subscribe_user_on_creation
+
+from shows.models import Show
+
 class UserForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
@@ -31,6 +35,8 @@ class UserForm(forms.ModelForm):
         user.username = self.make_random_username()
         user.set_password(self.cleaned_data["password2"])
         user.save()
+        shows = Show.objects.all()
+        subscribe_user_on_creation(user, shows)
         return user
 
     def make_random_username(self):
