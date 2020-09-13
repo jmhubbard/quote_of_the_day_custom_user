@@ -1,0 +1,25 @@
+{% extends 'project/base.html' %}
+
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<h2>{{ user }}</h2>
+<h2>{{ object.user }}</h2>
+
+{% if user != object.user%}
+    <h1> Users aren't equal</h1>
+{% else %}
+    <h1>Users are equal</h1>
+{% endif %}
+
+<h2>{{ object.show.name }}</h2>
+<form action = "{% url 'subscription-update' object.id %}"method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update">
+</form>
+{% endblock %}
+
+
