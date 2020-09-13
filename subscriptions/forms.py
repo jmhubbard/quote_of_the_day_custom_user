@@ -7,7 +7,6 @@ class SubscriptionForm(forms.ModelForm):
     class Meta:
         model = Subscription
         fields = [
-            'user',
             'show',
             'is_subscribed',
             ]
