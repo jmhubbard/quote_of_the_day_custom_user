@@ -4,15 +4,13 @@
 {% block content %}
 
 <h1>Hello {{ user }}!</h1>
-<div>
+<div class="form-group">
     <table>
-        <th>User</th>
         <th>Show</th>
         <th>Status</th>
         <th>Edit</th>
         {% for i in subscriptions %}
         <tr>
-            <td>{{ i.user }}</td>
             <td>{{ i.show }}</td>
             <td>{{ i.is_subscribed }}</td>
             <td><a href ="{% url 'subscription-update' i.id %}" class="btn btn-info btn-sm">Edit</a></td>
