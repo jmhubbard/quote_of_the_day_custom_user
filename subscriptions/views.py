@@ -14,7 +14,8 @@ from django.core.exceptions import PermissionDenied
 @login_required()
 def subscription(request):
     current_user = request.user
-    subscriptions = Subscription.objects.filter(user = current_user)
+    # subscriptions = Subscription.objects.filter(user = current_user)
+    subscriptions = request.user.subscription_set.all()
     context ={
         'current_user': current_user,
         'subscriptions': subscriptions
