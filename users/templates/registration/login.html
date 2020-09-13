@@ -3,7 +3,14 @@
 
 {% block title %}Login{% endblock %}
 
+<style>
+    #test {
+        padding-top: 18px;
+    }
+</style>
+
 {% block content %}
+
 
 
 {% if form.errors %}
@@ -11,7 +18,7 @@
 {% endif %}
 
 <h1 class="cover-heading">Login Page</h1>
-<p class="lead">Enter your infomation to sign in to your user preferencses page.</p>
+<p class="lead">Log in to your account to update your subscription preferences.</p>
  
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
@@ -19,6 +26,13 @@
  
 <input type="submit" value="login" />
 </form>
+
+{% for message in messages %}
+<div class="alert alert-info" role="alert" id="test">
+    <li> {{ message }} </li>
+</div>
+
+{% endfor %}
 
 {% endblock %}
 
