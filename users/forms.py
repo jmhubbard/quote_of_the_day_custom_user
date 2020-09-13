@@ -36,7 +36,7 @@ class UserForm(forms.ModelForm):
         user.set_password(self.cleaned_data["password2"])
         user.save()
         shows = Show.objects.all()
-        subscribe_user_on_creation(user, shows)
+        subscribe_user_on_creation(user, shows) ## Creates a subscription to each show in database for new user. 
         return user
 
     def make_random_username(self):
