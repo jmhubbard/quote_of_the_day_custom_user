@@ -18,12 +18,14 @@ from django.urls import path, include
 from users.views import UserCreate
 from django.views.generic.base import TemplateView
 from subscriptions.views import SubscriptionUpdate
+from main.views import HomePageView
 
 # from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls), #admin page
-    path('', TemplateView.as_view(template_name='main/home.html'), name='home'), #Current homepage After logging it you will be redirectedhere
+    # path('', TemplateView.as_view(template_name='main/home.html'), name='home'), #Current homepage After logging it you will be redirectedhere
     path('subscriptions/', include('subscriptions.urls')),
     path('accounts/', include('users.urls')),
+    path('', HomePageView.as_view(), name='home'),
 ]
