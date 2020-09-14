@@ -133,5 +133,5 @@ LOGOUT_REDIRECT_URL = 'home'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    'users/static/users/static/',
+    'static/main/css/',
 ]
