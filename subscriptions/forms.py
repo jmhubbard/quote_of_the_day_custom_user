@@ -17,7 +17,6 @@ class SubscriptionForm(forms.ModelForm):
         model = Subscription
         fields = [
             'status',
-            # 'status2'
             ]
     def save(self, commit=True):
         usersubscription = super().save(commit=False)
