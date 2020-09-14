@@ -1,20 +1,27 @@
 from django import forms
 from subscriptions.models import Subscription
+from django.utils.translation import gettext as _
 
 class SubscriptionForm(forms.ModelForm):
- 
+    # class LimitedStatus:
+    #     Subscription.Status.SUBSCRIBED
+    #     Subscription.Status.UNSUBSCRIBED
+    STATUS_CHOICES = (
+        (Subscription.STATUS_CHOICE_SUBSCRIBED, _('Subscribed')),
+        (Subscription.STATUS_CHOICE_UNSUBSCRIBED, _('Unsubscribed')),
+    )
+
+    status =  forms.ChoiceField(choices=STATUS_CHOICES)
 
     class Meta:
         model = Subscription
         fields = [
-            'show',
-            'subscription_preference',
+            'status',
+            # 'status2'
             ]
     def save(self, commit=True):
         usersubscription = super().save(commit=False)
-        # user = User.objects.get(username = "jasonhubb@gmail.com")
-        usersubscription.show = self.cleaned_data['show']
-        usersubscription.is_subscribed = self.cleaned_data['subscription_preference']
+        usersubscription.status = self.cleaned_data['status']
 
         # userpreference.user = user
         if commit:

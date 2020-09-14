@@ -26,9 +26,10 @@ def subscription(request):
 
 class SubscriptionUpdate(LoginRequiredMixin, UpdateView):
     model = Subscription
-    fields = ['subscription_preference',]
+    # fields = ['status',]
     template_name_suffix = '_update_form'
-
+    form_class = SubscriptionForm
+    
     
     def get_success_url(self):
         return reverse('subscription')
