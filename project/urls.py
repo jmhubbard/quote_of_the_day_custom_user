@@ -23,7 +23,7 @@ from subscriptions.views import SubscriptionUpdate
 
 urlpatterns = [
     path('admin/', admin.site.urls), #admin page
-    path('', TemplateView.as_view(template_name='project/home.html'), name='home'), #Current homepage After logging it you will be redirectedhere
+    path('', TemplateView.as_view(template_name='main/home.html'), name='home'), #Current homepage After logging it you will be redirectedhere
     path('subscriptions/', include('subscriptions.urls')),
     path('accounts/', include('users.urls')),
 ]

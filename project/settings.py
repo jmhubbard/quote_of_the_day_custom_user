@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'users',
     'shows',
     'subscriptions',
+    'main',
     'django_extensions',
 ]
 
@@ -129,3 +130,8 @@ AUTH_USER_MODEL = 'users.User'
 
 LOGIN_REDIRECT_URL = 'subscription'
 LOGOUT_REDIRECT_URL = 'home'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    'users/static/users/static/',
+]

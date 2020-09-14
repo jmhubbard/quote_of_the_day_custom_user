@@ -1,15 +1,18 @@
-{% extends 'project/base.html' %}
+{% extends 'main/base.html' %}
 
 
 {% block title %}Login{% endblock %}
 
-<style>
-    #test {
-        padding-top: 18px;
+<!-- <style>
+    h1 {
+        font-size: 30px;
     }
-</style>
+</style> -->
 
 {% block content %}
+
+{% load static %}
+
 
 
 
@@ -20,12 +23,15 @@
 <h1 class="cover-heading">Login Page</h1>
 <p class="lead">Log in to your account to update your subscription preferences.</p>
  
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-{{ form.as_p }}
- 
-<input type="submit" value="login" />
-</form>
+<div>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+         
+        <input type="submit" value="login" />
+    </form>
+</div>
+
 
 {% for message in messages %}
 <div class="alert alert-info" role="alert" id="test">
