@@ -3,6 +3,7 @@ from subscriptions.models import Subscription
 from django.utils.translation import gettext as _
 
 class SubscriptionForm(forms.ModelForm):
+    #STATUS_CHOICES IS SET TO BE LIKE STATUS_CHOICES IN SUBSCRIPTION MODEL BUT WITHOUT UKNOWN AND (UNKOWN) FOR USERS TO SELECT
     STATUS_CHOICES = (
         (Subscription.STATUS_CHOICE_SUBSCRIBED, _('Subscribed')),
         (Subscription.STATUS_CHOICE_UNSUBSCRIBED, _('Unsubscribed')),
