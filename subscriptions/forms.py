@@ -8,13 +8,13 @@ class SubscriptionForm(forms.ModelForm):
         model = Subscription
         fields = [
             'show',
-            'is_subscribed',
+            'subscription_preference',
             ]
     def save(self, commit=True):
         usersubscription = super().save(commit=False)
         # user = User.objects.get(username = "jasonhubb@gmail.com")
         usersubscription.show = self.cleaned_data['show']
-        usersubscription.is_subscribed = self.cleaned_data['is_subscribed']
+        usersubscription.is_subscribed = self.cleaned_data['subscription_preference']
 
         # userpreference.user = user
         if commit:

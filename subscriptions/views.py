@@ -26,7 +26,7 @@ def subscription(request):
 
 class SubscriptionUpdate(LoginRequiredMixin, UpdateView):
     model = Subscription
-    fields = ['is_subscribed',]
+    fields = ['subscription_preference',]
     template_name_suffix = '_update_form'
 
     

@@ -12,7 +12,7 @@
         {% for i in subscriptions %}
         <tr>
             <td>{{ i.show }}</td>
-            <td>{{ i.is_subscribed }}</td>
+            <td>{{ i.subscription_preference }}</td>
             <td><a href ="{% url 'subscription-update' i.id %}" class="btn btn-info btn-sm">Edit</a></td>
         </tr>
         {% endfor %}
