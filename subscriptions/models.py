@@ -18,12 +18,6 @@ subscription_choices = (
     ('Unsubscribed', 'Unsubscribed')
 )
 
-# subscription_choices = (
-#     (0, 'Unknown'),
-#     (1, 'Subscribed'),
-    # (2, 'Unsubscribed')
-# )
-
 class Subscription(models.Model):
     STATUS_CHOICE_UNKNOWN = 0
     STATUS_CHOICE_SUBSCRIBED = 1
@@ -34,15 +28,6 @@ class Subscription(models.Model):
         (STATUS_CHOICE_UNSUBSCRIBED, _('Unsubscribed')),
 
     )
-    # class Status(models.IntegerChoices):
-    #     UKNOWN = 0, _('Unknown')
-    #     SUBSCRIBED = 1, _('Subscribed')
-    #     UNSUBSCRIBED = 2, _('Unsubscribed')
-    #     __empty__ = _('(Unknown)')
-    # class UserSelectableStatus(models.IntegerChoices):
-    #     SUBSCRIBED = 1, _('Subscribed')
-    #     UNSUBSCRIBED = 2, _('Unsubscribed')
-
 
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
     show = models.ForeignKey('shows.Show', on_delete=models.CASCADE)
