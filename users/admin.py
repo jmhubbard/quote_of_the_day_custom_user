@@ -84,9 +84,10 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('username', 'email', 'password1', 'password2'),
         }),
     )
-    search_fields = ('email',)
+    search_fields = ('email','username')
     ordering = ('email',)
     filter_horizontal = ()
+    list_filter = ('is_staff','is_superuser','is_active',)
 
 
 admin.site.register(User, UserAdmin)
