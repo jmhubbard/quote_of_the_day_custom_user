@@ -18,7 +18,7 @@ from django.urls import path, include
 from users.views import UserCreate
 from django.views.generic.base import TemplateView
 from subscriptions.views import SubscriptionUpdate
-from main.views import HomePageView
+from main.views import HomePageView, UserLoginView
 
 # from django.contrib.auth import views as auth_views
 
@@ -28,4 +28,5 @@ urlpatterns = [
     path('subscriptions/', include('subscriptions.urls')),
     path('accounts/', include('users.urls')),
     path('', HomePageView.as_view(), name='home'),
+    path('accounts/login', UserLoginView.as_view(), name='login'),
 ]
