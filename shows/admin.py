@@ -17,11 +17,32 @@ def create_subscription_for_all_users_if_doesnt_exist(modeladmin, request, query
                 sub = Subscription(user=user, show=show)
                 sub.save()
 
+def make_show_active(modeladmin, request, queryset):
+    for show in queryset:
+        show.is_active = True
+        show.save()
+
+def make_show_inactive(modeladmin, request, queryset):
+    for show in queryset:
+        show.is_active = False
+        show.save()
+
 
 class ShowAdmin(admin.ModelAdmin):
     actions = (
     create_subscription_for_all_users_if_doesnt_exist,
+    make_show_active,
+    make_show_inactive,
     )
-    list_display = ('name',)
+    
+    list_display = ('name','is_active','subscriber_count')
+
+    def subscriber_count(self, show):
+        user_count = Show.objects.filter(subscription__status = 1, name = show)
+        return user_count.count()
+            
+
+
+        # Show.objects.filter(subscription__status = 1)
 
 admin.site.register(Show, ShowAdmin)
