@@ -46,4 +46,4 @@ class Subscription(models.Model):
         return reverse("subscription-update", args=[self.id])
 
     def __str__(self):
-        return (f'{self.user}    {self.show}    {self.is_subscribed}')
+        return (f'{self.user}    {self.show}    {self.status}')
