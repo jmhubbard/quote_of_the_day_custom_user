@@ -6,6 +6,7 @@ from subscriptions.models import Subscription
 class Show(models.Model):
     name = models.CharField(max_length=255)
     subscribers = models.ManyToManyField('users.User', through=Subscription)
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
