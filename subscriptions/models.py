@@ -31,12 +31,6 @@ class Subscription(models.Model):
 
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
     show = models.ForeignKey('shows.Show', on_delete=models.CASCADE)
-    is_subscribed = models.BooleanField(default=True)
-    subscription_preference = models.CharField( 
-        max_length = 20, 
-        choices = subscription_choices, 
-        default = 'Subscribed'
-        ) 
     status = models.IntegerField( 
         choices = STATUS_CHOICES, 
         default = STATUS_CHOICE_SUBSCRIBED,
