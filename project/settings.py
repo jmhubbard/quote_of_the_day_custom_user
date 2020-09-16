@@ -138,3 +138,11 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
     'static/main/css/',
 ]
+
+EMAIL_HOST = os.getenv("EMAIL_HOST", 'smtp.gmail.com')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', str(587)))
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = bool(int(os.getenv('EMAIL_USE_TLS', str(int(True)))))
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+
