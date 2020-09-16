@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'shows',
     'subscriptions',
     'main',
+    'emails',
     'django_extensions',
 ]
 
