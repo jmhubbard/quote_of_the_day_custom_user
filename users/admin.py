@@ -6,6 +6,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
+from emails.utils import email_test
 
 from users.models import User, make_random_username
 
@@ -61,6 +62,11 @@ class UserChangeForm(forms.ModelForm):
         return self.initial["password"]
 
 
+
+def email_users(modeladmin, request, queryset):
+    for user in queryset:
+        email_test(user)
+
 class UserAdmin(BaseUserAdmin):
     # The forms to add and change user instances
     form = UserChangeForm
@@ -78,6 +84,9 @@ class UserAdmin(BaseUserAdmin):
     # )
     # # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # # overrides get_fieldsets to use this attribute when creating a user.
+    actions = (
+        email_users,
+    )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
