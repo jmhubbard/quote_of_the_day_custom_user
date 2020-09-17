@@ -14,6 +14,6 @@ class UserCreate(SuccessMessageMixin, CreateView):
     success_url = "/accounts/login/"
     success_message = "Account was successfully created."
 
-    @method_decorator(unauthenticated_user) #If user is already authenticated they will be redirected to their subscription page
+    @method_decorator(unauthenticated_user) #If user is already authenticated they will be redirected to their subscription
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)

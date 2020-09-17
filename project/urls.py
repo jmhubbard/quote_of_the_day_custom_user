@@ -21,7 +21,7 @@ from subscriptions.views import SubscriptionUpdate
 from main.views import (
     HomePageView, UserLoginView, CustomPasswordResetView, 
     CustomPasswordResetDoneView, CustomPasswordResetConfirmView,
-    CustomPasswordResetCompleteView)
+    CustomPasswordResetCompleteView, UserLogoutView)
 
 from django.contrib.auth import views as auth_views
 
@@ -31,7 +31,7 @@ urlpatterns = [
     path('subscriptions/', include('subscriptions.urls')),
     path('accounts/', include('users.urls')),
     path('', HomePageView.as_view(), name='home'),
-    path('accounts/login', UserLoginView.as_view(), name='login'),
+    # path('accounts/login', UserLoginView.as_view(), name='login'),
 
 
 

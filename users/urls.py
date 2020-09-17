@@ -13,16 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path, include
 from users.views import UserCreate
-from django.views.generic.base import TemplateView
-from subscriptions.views import SubscriptionUpdate
+from main.views import UserLoginView, UserLogoutView
 
 # from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('', include('django.contrib.auth.urls')), #accounts/login = login page
+    path('login/', UserLoginView.as_view(), name='login'),
     path('add/', UserCreate.as_view(), name='user-add'), #Create user page
-    path('accounts/', include('django.contrib.auth.urls')), #accounts/login = login page
+    path('logout/' , UserLogoutView.as_view(), name='logout')
+        # path('', include('django.contrib.auth.urls')), #accounts/login = login page
+        # path('accounts/', include('django.contrib.auth.urls')), #accounts/login = login page
 ]
