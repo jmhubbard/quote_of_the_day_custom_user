@@ -1,6 +1,19 @@
 {% extends 'main/loggedin.html' %}
 {% load static %}
 
+{% block header %}
+<header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">Quote Of The Day</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link active" href="{% url 'subscription' %}">Subscriptions Page</a>
+        <a class="nav-link" href= '#'>Change Password</a>
+        <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+      </nav>
+    </div>
+  </header>
+{% endblock header %}
+
 {% block content %}
 
 <h1>Hello {{ user }}!</h1>
