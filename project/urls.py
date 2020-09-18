@@ -21,7 +21,7 @@ from subscriptions.views import SubscriptionUpdate
 from main.views import (
     HomePageView, UserLoginView, CustomPasswordResetView, 
     CustomPasswordResetDoneView, CustomPasswordResetConfirmView,
-    CustomPasswordResetCompleteView, UserLogoutView)
+    CustomPasswordResetCompleteView, UserLogoutView, CustomPasswordChangeView, CustomPasswordChangeDoneView)
 
 from django.contrib.auth import views as auth_views
 
@@ -39,5 +39,7 @@ urlpatterns = [
     path('reset_password_sent/', CustomPasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', CustomPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset_password_complete/', CustomPasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path('change_password/', CustomPasswordChangeView.as_view(), name='password_change'),
+    path('change_password_done/', CustomPasswordChangeDoneView.as_view(), name='password_change_done')
 
 ]

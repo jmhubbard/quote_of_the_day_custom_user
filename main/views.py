@@ -5,7 +5,7 @@ from main.decorators import unauthenticated_user
 from django.contrib.auth.views import (LoginView, 
 PasswordResetView, PasswordResetDoneView, 
 PasswordResetConfirmView, PasswordResetCompleteView,
-LogoutView,)
+LogoutView,PasswordChangeView, PasswordChangeDoneView)
 
 
 
@@ -62,3 +62,11 @@ class CustomPasswordResetCompleteView(PasswordResetCompleteView):
     @method_decorator(unauthenticated_user) #If user is already authenticated they will be redirected to their subscription page
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
+
+class CustomPasswordChangeView(PasswordChangeView):
+
+    template_name = "main/password_change.html"
+
+class CustomPasswordChangeDoneView(PasswordChangeDoneView):
+    template_name = "main/password_change_done.html"
+
