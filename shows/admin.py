@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Show
+from .models import Show, Episode
 from users.models import User
 from subscriptions.models import Subscription
 
@@ -46,3 +46,5 @@ class ShowAdmin(admin.ModelAdmin):
         # Show.objects.filter(subscription__status = 1)
 
 admin.site.register(Show, ShowAdmin)
+
+admin.site.register(Episode)
