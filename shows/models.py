@@ -12,5 +12,10 @@ class Show(models.Model):
         return self.name
     
 
+class Episode(models.Model):
+    name = models.CharField(max_length=255)
+    number = models.PositiveIntegerField()
+    show = models.ForeignKey(Show, on_delete=models.CASCADE)
 
-
+    def __str__(self):
+        return self.name
