@@ -8,7 +8,6 @@ class QuoteAdmin(admin.ModelAdmin):
     list_display = (  
     'quote_text_abridged',
     'quotelength',
-    # 'abridgedquotelength',
     'speaker_name',
     'show_name',
     'season_number',
@@ -28,8 +27,7 @@ class QuoteAdmin(admin.ModelAdmin):
     def quotelength(self, quote):
         return len(quote.quote_text)
 
-    # def abridgedquotelength(self, quote):
-    #     return len(self.quote_text_abridged(quote))
+
 
     def quote_text_abridged(self, quote):
         maxlength = 30
