@@ -4,7 +4,7 @@ from subscriptions.models import Subscription
 
 # Create your models here.
 class Show(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     subscribers = models.ManyToManyField('users.User', through=Subscription)
     is_active = models.BooleanField(default=False)
 
