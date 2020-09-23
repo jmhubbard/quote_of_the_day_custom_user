@@ -9,7 +9,7 @@ class Quote(models.Model):
     episode = models.ForeignKey(Episode, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
-        return f'''"{self.quote_text}" by {self.speaker_name} - {self.show_name} - {self.season_number} - {self.episode_title}'''
+        return f"{self.quote_text}"
         # return f"{self.quote_text} by {self.speaker_name} - {self.show_name} - {self.season_number} - {self.episode_title}"
 
 
