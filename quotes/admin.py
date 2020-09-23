@@ -10,11 +10,13 @@ class QuoteAdmin(admin.ModelAdmin):
     'quotelength',
     'speaker_name',
     'episode',
+    'speaker',
     )
 
     list_filter = (  
     'speaker_name',
     'episode',
+    'speaker'
     )
 
 
