@@ -9,13 +9,13 @@ class QuoteAdmin(admin.ModelAdmin):
     'quote_text_abridged',
     'quotelength',
     'speaker_name',
-    'show_name',
+    # 'show_name',
     'episode',
     )
 
     list_filter = (  
     'speaker_name',
-    'show_name',
+    # 'show_name',
     'episode',
     )
 
