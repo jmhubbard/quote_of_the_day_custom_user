@@ -8,7 +8,7 @@ class Quote(models.Model):
     show_name = models.ForeignKey(Show, on_delete=models.CASCADE)
     season_number = models.CharField(max_length=255)
     episode_number = models.CharField(max_length=255)
-    episode_title = models.CharField(max_length=255)
+    episode_title = models.CharField(max_length=256)
     episode = models.ForeignKey(Episode, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
