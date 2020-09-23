@@ -10,17 +10,13 @@ class QuoteAdmin(admin.ModelAdmin):
     'quotelength',
     'speaker_name',
     'show_name',
-    'season_number',
-    'episode_number',
-    'episode_title'
+    'episode',
     )
 
     list_filter = (  
     'speaker_name',
     'show_name',
-    'season_number',
-    'episode_number',
-    'episode_title',
+    'episode',
     )
 
 
