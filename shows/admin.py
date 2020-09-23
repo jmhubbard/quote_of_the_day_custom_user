@@ -47,7 +47,7 @@ class EpisodeAdmin(admin.ModelAdmin):
 
 class CharacterAdmin(admin.ModelAdmin):
 
-    list_display = ('name','show')
+    list_display = ('first_name', 'last_name','show')
 
 
 admin.site.register(Show, ShowAdmin)

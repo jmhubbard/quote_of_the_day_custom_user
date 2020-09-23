@@ -22,7 +22,6 @@ class Episode(models.Model):
         return self.name
 
 class Character(models.Model):
-    name = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
@@ -33,5 +32,5 @@ class Character(models.Model):
         )
 
     def __str__(self):
-        return self.name
+        return f"{self.first_name} {self.last_name}"
 
