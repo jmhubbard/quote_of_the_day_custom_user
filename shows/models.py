@@ -20,3 +20,17 @@ class Episode(models.Model):
 
     def __str__(self):
         return self.name
+
+class Character(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    show = models.ForeignKey(Show, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = (
+            ("first_name", "last_name", "show"),
+        )
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+

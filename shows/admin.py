@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Show, Episode
+from .models import Show, Episode, Character
 from users.models import User
 from subscriptions.models import Subscription
 
@@ -45,6 +45,13 @@ class EpisodeAdmin(admin.ModelAdmin):
 
     list_display = ('name','season','number','show')
 
+class CharacterAdmin(admin.ModelAdmin):
+
+    list_display = ('__str__','first_name', 'last_name','show')
+
+
 admin.site.register(Show, ShowAdmin)
 
 admin.site.register(Episode, EpisodeAdmin)
+admin.site.register(Character, CharacterAdmin)
+# admin.site.register(Character)
