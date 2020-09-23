@@ -19,18 +19,18 @@ class QuoteAdmin(admin.ModelAdmin):
 
 
     def quotelength(self, quote):
-        return len(quote.quote_text)
+        return len(quote.text)
 
 
 
     def quote_text_abridged(self, quote):
         maxlength = 30
-        if len(quote.quote_text) <= maxlength:
-            return quote.quote_text
+        if len(quote.text) <= maxlength:
+            return quote.text
         else:
             # we return a string of length maxlength by slicing the string of maxlength - 1 
             # to account for the addition of the '…'
-            return (quote.quote_text[:maxlength-1] + '…' )
+            return (quote.text[:maxlength-1] + '…' )
     quote_text_abridged.short_description = 'Abridged Quote'
 
 
