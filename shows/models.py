@@ -29,7 +29,7 @@ class Character(models.Model):
 
     class Meta:
         unique_together = (
-            ("name", "show"),
+            ("first_name", "last_name", "show"),
         )
 
     def __str__(self):
