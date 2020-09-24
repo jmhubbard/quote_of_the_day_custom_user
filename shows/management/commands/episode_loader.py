@@ -22,7 +22,6 @@ class Command(BaseCommand):
                 show_name=Show.objects.get(name=item["show"])
             except ObjectDoesNotExist:
                 show_does_not_exist.append(item)
-                print('hello')
             else:
                 episode = Episode(
                     name=item["episode"],
