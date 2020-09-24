@@ -1,10 +1,10 @@
 from django.db import models
-from shows.models import Show, Episode
+from shows.models import Show, Episode, Character
 
 # Create your models here.
 class Quote(models.Model):
     text = models.TextField(unique=True)
-    speaker_name = models.CharField(max_length=255)
+    speaker = models.ForeignKey(Character, on_delete=models.CASCADE)
     episode = models.ForeignKey(Episode, on_delete=models.CASCADE, null=True)
     
     def __str__(self):

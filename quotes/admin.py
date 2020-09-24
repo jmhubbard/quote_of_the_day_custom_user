@@ -8,13 +8,13 @@ class QuoteAdmin(admin.ModelAdmin):
     list_display = (  
     'quote_text_abridged',
     'quotelength',
-    'speaker_name',
     'episode',
+    'speaker',
     )
 
     list_filter = (  
-    'speaker_name',
     'episode',
+    'speaker'
     )
 
 
