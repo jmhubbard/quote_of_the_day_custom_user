@@ -38,8 +38,8 @@ class Command(BaseCommand):
                     else:
                         savedCount += 1
                     
-        print(f'Show does not exist in database for the follow: {show_does_not_exist}')
-        print(f'Total attempted quotes: {totalattempteditems}')
+        print(f'Show does not exist in database for the following: {show_does_not_exist}')
+        print(f'Total attempted episodes: {totalattempteditems}')
         print(f"Skipped {duplicateCount} duplicate episodes.")
         print(f"Saved: {savedCount} episodes.")
-        print(f"Total: {Episode.objects.count()} episodes.")
+        print(f"Total: {Episode.objects.count()} episodes in database.")
