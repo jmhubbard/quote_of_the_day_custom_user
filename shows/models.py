@@ -17,6 +17,11 @@ class Episode(models.Model):
     season = models.PositiveIntegerField(null=True, blank=True)
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = (
+            ("name", "season", "show"),
+        )
+
     def __str__(self):
         return self.name
 
