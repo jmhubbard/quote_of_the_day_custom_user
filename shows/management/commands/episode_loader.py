@@ -26,7 +26,6 @@ class Command(BaseCommand):
             else:
                 episode = Episode(
                     name=item["episode"],
-                    number=69,
                     season=item["season"],
                     show=show_name
                 )
