@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from quotes.models import Episode, Show
+from shows.models import Episode, Show
 from quotes.quotelist import quotelistdict
 
 from django.db import IntegrityError
