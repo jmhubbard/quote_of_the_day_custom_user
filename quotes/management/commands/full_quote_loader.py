@@ -46,51 +46,51 @@ class Command(BaseCommand):
                         season = item["season"],
                         show = show
                     )
-                    if options["save"]:
+
+                    try:
+                        episode.save()
+                    except IntegrityError:
+                        duplicateEpisodes += 1
+                        episode = Episode.objects.get(
+                            name=item["episode"],
+                            season=item["season"],
+                            show=show
+                            )
+                    else:
+                        savedEpisodeCount += 1
+                    finally:    
+                        character = Character(
+                            first_name = item["first_name"],
+                            last_name = item["last_name"],
+                            show = show
+                        )
+
                         try:
-                            episode.save()
+                            character.save()
                         except IntegrityError:
-                            duplicateEpisodes += 1
-                            episode = Episode.objects.get(
-                                name=item["episode"],
-                                season=item["season"],
-                                show=show
-                                )
-                        else:
-                            savedEpisodeCount += 1
-                        finally:    
-                            character = Character(
+                            duplicateCharacters += 1
+                            character = Character.objects.get(
                                 first_name = item["first_name"],
                                 last_name = item["last_name"],
                                 show = show
                             )
-                            if options["save"]:
-                                try:
-                                    character.save()
-                                except IntegrityError:
-                                    duplicateCharacters += 1
-                                    character = Character.objects.get(
-                                        first_name = item["first_name"],
-                                        last_name = item["last_name"],
-                                        show = show
-                                    )
-                                else:
-                                    savedCharacterCount += 1
-                                finally:
-                                    quote = Quote(
-                                        text = item["quote"],
-                                        speaker = character,
-                                        episode = episode 
-                                    )
-                                    if options["save"]:
-                                        try:
-                                            quote.save()
-                                        except IntegrityError:
-                                            duplicateQuotes += 1
-                                            # continue
-                                        else:
-                                            savedQuoteCount += 1
-        
+                        else:
+                            savedCharacterCount += 1
+                        finally:
+                            quote = Quote(
+                                text = item["quote"],
+                                speaker = character,
+                                episode = episode 
+                            )
+
+                            try:
+                                quote.save()
+                            except IntegrityError:
+                                duplicateQuotes += 1
+                                # continue
+                            else:
+                                savedQuoteCount += 1
+    
 
         print(f'Total attempted items: {totalAttemptedItems}')
 
