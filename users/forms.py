@@ -11,6 +11,8 @@ from shows.models import Show
 
 from django.contrib.auth.password_validation import validate_password
 
+from emails.models import create_email_tracker_for_user_on_creation
+
 class UserForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
@@ -40,6 +42,7 @@ class UserForm(forms.ModelForm):
         user.save()
         shows = Show.objects.all()
         subscribe_user_on_creation(user, shows) ## Creates a subscription to each show in database for new user. 
+        create_email_tracker_for_user_on_creation(user)
         return user
 
     def make_random_username(self):
