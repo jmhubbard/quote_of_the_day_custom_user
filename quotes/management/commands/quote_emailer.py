@@ -4,6 +4,7 @@ from shows.models import Character, Episode, Show
 from users.models import User
 from subscriptions.models import Subscription
 import random
+from emails.utils import email_test
 
 from django.db import IntegrityError
 
@@ -25,7 +26,10 @@ class Command(BaseCommand):
         for show in show_list:
             show_quotes = Quote.objects.filter(episode__show__name = show)
             random_quote = random.choice(show_quotes)
+            quote_email = f"{random_quote.text} - by {random_quote.speaker}.\n{random_quote.episode.show.name} Season: {random_quote.episode.season} {random_quote.episode.name}"
             current_subscribers = User.objects.filter(subscription__show__name = show, subscription__status = 1)
             for user in current_subscribers:
-                print(user.email, random_quote.text, random_quote.speaker, random_quote.episode.name, random_quote.episode.season, random_quote.episode.show.name)
+
+                email_test(user.email, quote_email)
+                # print(user.email, random_quote.text, random_quote.speaker, random_quote.episode.name, random_quote.episode.season, random_quote.episode.show.name)
     
