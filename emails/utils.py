@@ -25,13 +25,13 @@ def email_daily_quote(quote, user):
         "unsubscribe_uri": url,
         "quote": quote,
     }
-    message_text = render_to_string("email.txt", context=context)
-    message_html = render_to_string("email.html", context=context)
+    message_text = render_to_string("emails/email.txt", context=context)
+    message_html = render_to_string("emails/email.html", context=context)
     return send_mail(
         "Quote Of The Day",
         message_text,
         os.getenv("EMAIL_HOST_USER"),
-        [user.email],
+        [user],
         fail_silently=False,
         html_message=message_html,
     )
