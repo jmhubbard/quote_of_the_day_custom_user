@@ -5,6 +5,8 @@ from users.models import User
 from subscriptions.models import Subscription
 import random
 from emails.utils import email_test
+from emails.models import EmailTracker
+from datetime import date, timedelta, datetime
 
 from django.db import IntegrityError
 
@@ -32,4 +34,9 @@ class Command(BaseCommand):
             #Users are filtred by those that are subscribed to the current show. All subscribed users will be sent and email with the quote.
             current_subscribers = User.objects.filter(subscription__show__name = show, subscription__status = 1)
             for user in current_subscribers:
-                email_test(user.email, quote_email)    
+                today_date = date.today()
+                users_last_email = EmailTracker.objects.get(user = user)
+                if users_last_email.last_quote_email.date() != today_date:
+                    email_test(user.email, quote_email)
+                    users_last_email.last_quote_email = datetime.now()
+                    users_last_email.save()

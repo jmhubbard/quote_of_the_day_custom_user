@@ -1,5 +1,14 @@
 from django.db import models
 import users.models
+from datetime import date, timedelta, datetime
+
+def create_email_tracker_for_user_on_creation(user):
+    current_time = datetime.now()
+    user_email_tracker = EmailTracker(user = user, last_quote_email = current_time)
+    user_email_tracker.save()
+    
+    
+
 
 class EmailTracker(models.Model):
     user = models.OneToOneField("users.User", on_delete=models.CASCADE)
