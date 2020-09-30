@@ -7,6 +7,7 @@ import random
 from emails.utils import email_test
 from emails.models import EmailTracker
 from datetime import date, timedelta, datetime
+from emails.utils import email_daily_quote
 
 from django.db import IntegrityError
 
