@@ -40,7 +40,7 @@ class UserForm(forms.ModelForm):
         user.username = self.make_random_username()
         user.set_password(self.cleaned_data["password2"])
         user.save()
-        shows = Show.objects.all()
+        shows = Show.objects.filter(is_active = True)
         subscribe_user_on_creation(user, shows) ## Creates a subscription to each show in database for new user. 
         create_email_tracker_for_user_on_creation(user)
         return user
