@@ -31,7 +31,7 @@ class Command(BaseCommand):
         for show in show_list:
             show_quotes = Quote.objects.filter(episode__show__name = show)
             random_quote = random.choice(show_quotes)
-            quote_email = f"{random_quote.text} - by {random_quote.speaker}.\n{random_quote.episode.show.name} Season: {random_quote.episode.season} {random_quote.episode.name}"
+            quote_email = f'"{random_quote.text}"\n-{random_quote.speaker}\t{random_quote.episode.show.name}\tSeason: {random_quote.episode.season}\t{random_quote.episode.name}'
             #Users are filtred by those that are subscribed to the current show.
             current_subscribers = User.objects.filter(subscription__show__name = show, subscription__status = 1)
             for user in current_subscribers:
