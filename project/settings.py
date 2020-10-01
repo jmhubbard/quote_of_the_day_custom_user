@@ -46,7 +46,11 @@ INSTALLED_APPS = [
     'emails',
     'quotes',
     'django_extensions',
+    'django.contrib.sites',
 ]
+
+SITE_ID = 1
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

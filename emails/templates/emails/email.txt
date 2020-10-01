@@ -1,0 +1,3 @@
+{{ quote }}
+
+{{ unsubscribe_uri }}
