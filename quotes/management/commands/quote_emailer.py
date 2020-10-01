@@ -32,11 +32,13 @@ class Command(BaseCommand):
             show_quotes = Quote.objects.filter(episode__show__name = show)
             random_quote = random.choice(show_quotes)
             quote_email = f"{random_quote.text} - by {random_quote.speaker}.\n{random_quote.episode.show.name} Season: {random_quote.episode.season} {random_quote.episode.name}"
-            #Users are filtred by those that are subscribed to the current show. All subscribed users will be sent and email with the quote.
+            #Users are filtred by those that are subscribed to the current show.
             current_subscribers = User.objects.filter(subscription__show__name = show, subscription__status = 1)
             for user in current_subscribers:
                 today_date = date.today()
+                #Get the date/time of the users last quote email sent through quote_emailer
                 users_last_email = EmailTracker.objects.get(user = user)
+                #Will send a quote if the person hasn't recived one yet. This ensures that they only recive one quote and not one for every show they are subscribed to
                 if users_last_email.last_quote_email.date() != today_date:
                     email_daily_quote(quote_email, user.email)
                     users_last_email.last_quote_email = datetime.now()
