@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 django-extensions = "*"
 gunicorn = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.8"
