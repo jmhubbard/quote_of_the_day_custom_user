@@ -144,8 +144,8 @@ LOGIN_REDIRECT_URL = 'subscription'
 LOGOUT_REDIRECT_URL = 'home'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    'static/main/css/',
+    # BASE_DIR / "static",
+    # 'static/main/css/',
 ]
 
 EMAIL_HOST = os.getenv("EMAIL_HOST", 'smtp.gmail.com')
