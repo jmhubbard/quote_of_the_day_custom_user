@@ -27,6 +27,7 @@ class UserManager(UserManager):
         return self._create_user(username, email, password, **extra_fields)
 
     def make_random_username(self):
+        import string
         return make_random_username(length=14, allowed_chars=string.ascii_lowercase)
 
 
