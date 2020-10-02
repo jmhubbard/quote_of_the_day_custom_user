@@ -18,7 +18,7 @@ def email_daily_quote(quote, user):
     #Gets the current domain name
     domain = Site.objects.get_current().domain
     # reverse a url in a view to get the path after the domain
-    path = reverse('home')
+    path = reverse('login')
     url = 'http://{domain}{path}'.format(domain=domain, path=path)
 
     context = {
