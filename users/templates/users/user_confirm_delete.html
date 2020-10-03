@@ -1,0 +1,35 @@
+{% extends 'main/loggedin.html' %}
+
+
+{% block title %}Login{% endblock %}
+
+{% block header %}
+<header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">Quote Of The Day</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link " href="{% url 'subscription' %}">Subscriptions Page</a>
+        <a class="nav-link active" href= "{% url 'password_change' %}">Change Password</a>
+        <a class="nav-link" href = "#">Unsubscribe</a>
+        <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+      </nav>
+    </div>
+  </header>
+{% endblock header %}
+
+{% block content %}
+
+
+
+<div class="form-group">
+    <form method="post">{% csrf_token %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <input type="submit" value="Confirm">
+    </form>
+</div>
+{% endblock %}
+
+
+
+
+
