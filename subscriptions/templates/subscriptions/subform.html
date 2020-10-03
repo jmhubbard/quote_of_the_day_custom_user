@@ -6,9 +6,7 @@
     <div class="inner">
       <h3 class="masthead-brand">Quote Of The Day</h3>
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="{% url 'subscription' %}">Subscriptions Page</a>
-        <a class="nav-link" href= "{% url 'password_change' %}">Change Password</a>
-        <a class="nav-link" href = "#">Unsubscribe</a>
+        <a class="nav-link active" href="{% url 'account_page' %}">Account Page</a>
         <a class="nav-link" href="{% url 'logout'%}">Logout</a>
       </nav>
     </div>
@@ -17,7 +15,7 @@
 
 {% block content %}
 
-<h1>Hello {{ user }}!</h1>
+<h1>Account Settings For {{ user }}!</h1>
 <div class="form-group">
     <table>
         <th>Show</th>
@@ -32,6 +30,8 @@
         {% endfor %}
 
     </table>
+    <br>
+    <p><a href ="{% url 'password_change' %}" class="btn btn-primary btn-md">Change Password</a></p>
     <br>
     <p><a href ="{% url 'delete_account' user.id %}" class="btn btn-danger">Delete Account</a></p>
 </div>
