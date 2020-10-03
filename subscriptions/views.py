@@ -9,6 +9,7 @@ from django.forms import ValidationError
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.core.exceptions import PermissionDenied
+from django.http import Http404
 # from.django.core.urlresolvers import reverse_lazy
 
 @login_required()
@@ -65,7 +66,7 @@ class SubscriptionUpdate(LoginRequiredMixin, UpdateView):
             # Get the single item from the filtered queryset
             obj = queryset.get()
         except queryset.model.DoesNotExist:
-            raise Http404(_("No %(verbose_name)s found matching the query") %
+            raise Http404(("No %(verbose_name)s found matching the query") %
                         {'verbose_name': queryset.model._meta.verbose_name})
 
         current_user = self.request.user
