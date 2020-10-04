@@ -1,5 +1,5 @@
 from django.urls import path, include
-from users.views import UserCreate, UserDeleteView, UserAccountView, useraccountview
+from users.views import UserCreate, UserDeleteView, useraccountview
 from main.views import UserLoginView, UserLogoutView
 
 # from django.contrib.auth import views as auth_views
