@@ -10,6 +10,8 @@ from django.views.generic.edit import DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
+from django.views.generic.base import TemplateView
+from django.contrib.auth.decorators import login_required
 
 
 class UserDeleteView(LoginRequiredMixin, DeleteView):
@@ -66,3 +68,18 @@ class UserCreate(SuccessMessageMixin, CreateView):
     @method_decorator(unauthenticated_user) #If user is already authenticated they will be redirected to their subscription
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
+
+
+# class UserAccountView(LoginRequiredMixin, TemplateView):
+
+#     template_name = "users/account_page.html"
+
+@login_required()
+def useraccountview(request):
+    current_user = request.user
+    # subscriptions = Subscription.objects.filter(user = current_user)
+    context ={
+        'current_user': current_user,
+    }
+
+    return render(request, 'users/account_page.html', context)
