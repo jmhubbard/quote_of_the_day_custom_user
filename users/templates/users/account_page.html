@@ -1,0 +1,41 @@
+{% extends 'main/loggedin.html' %}
+
+
+{% block title %}Login{% endblock %}
+
+{% block header %}
+<header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">Quote Of The Day</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link " href="{% url 'account_page' %}">Account Page</a>
+        <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+      </nav>
+    </div>
+  </header>
+{% endblock header %}
+
+{% block content %}
+
+
+<div>
+    <h1>Account Page for {{ user }}</h1>
+    <br>
+    <div class="form-group">
+      <table class= "table">
+          <tr>
+              <td>Quotes Subscriptions</td>
+              <td><a href ="{% url 'subscriptions' %}" class="btn btn-info btn-sm">Edit</a></td>
+          </tr>
+          <tr>
+            <td>Change Password</td>
+            <td><a href ="{% url 'password_change' %}" class="btn btn-info btn-sm">Edit</a></td>
+          </tr>
+          <tr>
+            <td>Delete Account</td>
+            <td><a href ="{% url 'delete_account' user.id %}" class="btn btn-danger btn-sm">Edit</a></td>
+          </tr>
+  
+      </table>
+</div>
+{% endblock %}

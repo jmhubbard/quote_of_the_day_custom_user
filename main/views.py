@@ -8,8 +8,6 @@ PasswordResetConfirmView, PasswordResetCompleteView,
 LogoutView,PasswordChangeView, PasswordChangeDoneView)
 
 
-
-
 class HomePageView(TemplateView):
 
     template_name = "main/home.html"

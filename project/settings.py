@@ -142,7 +142,7 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'users.User'
 
-LOGIN_REDIRECT_URL = 'subscription'
+LOGIN_REDIRECT_URL = 'account_page'
 LOGOUT_REDIRECT_URL = 'home'
 
 STATICFILES_DIRS = [
