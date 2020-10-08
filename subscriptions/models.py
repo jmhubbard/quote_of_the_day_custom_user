@@ -33,7 +33,7 @@ class Subscription(models.Model):
     show = models.ForeignKey('shows.Show', on_delete=models.CASCADE)
     status = models.IntegerField( 
         choices = STATUS_CHOICES, 
-        default = STATUS_CHOICE_SUBSCRIBED,
+        default = STATUS_CHOICE_UNSUBSCRIBED,
         ) 
 
     class Meta:
