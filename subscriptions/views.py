@@ -33,7 +33,7 @@ class SubscriptionUpdate(LoginRequiredMixin, UpdateView):
     
     
     def get_success_url(self):
-        return reverse('subscription')
+        return reverse('subscriptions')
 
 
     def get_object(self, queryset=None):
