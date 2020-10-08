@@ -4,6 +4,8 @@ from .models import Show, Episode, Character
 from users.models import User
 from subscriptions.models import Subscription
 
+from emails.utils import email_all_users_an_email
+
 
 
 def create_subscription_for_all_users_if_doesnt_exist(modeladmin, request, queryset):
@@ -27,12 +29,19 @@ def make_show_inactive(modeladmin, request, queryset):
         show.is_active = False
         show.save()
 
+def email_users_about_new_show(modeladmin, request, queryset):
+    all_users = User.objects.all()
+
+    for user in all_users:
+        email_all_users_an_email(user, queryset)
+
 
 class ShowAdmin(admin.ModelAdmin):
     actions = (
     create_subscription_for_all_users_if_doesnt_exist,
     make_show_active,
     make_show_inactive,
+    email_users_about_new_show,
     )
     
     list_display = ('name','is_active','subscriber_count')
