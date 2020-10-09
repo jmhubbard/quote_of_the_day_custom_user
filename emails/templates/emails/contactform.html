@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+<h1>Contact Form</h1>
+<p>If you are having an issue with the service or have any comments that you would like us to know,
+    fill out the contact form below and someone will respond shortly.
+</p>
+
+
+
+
+<form action="{% url 'contactform' %}" method="post">
+    {% csrf_token %}
+    <table>{{ form.as_table }}</table>
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+
+<br>
+
+{% for message in messages %}
+<div class="alert alert-info" role="alert" id="test">
+    <li> {{ message }} </li>
+</div>
+
+{% endfor %}
+
+{% endblock %}
