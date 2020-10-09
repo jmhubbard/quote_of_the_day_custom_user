@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+
+{% block header %}
+{% if user.is_authenticated %}
+<header class="masthead mb-auto">
+  <div class="inner">
+    <h3 class="masthead-brand">Quote Of The Day</h3>
+    <nav class="nav nav-masthead justify-content-center">
+      <a class="nav-link " href="{% url 'account_page' %}">Account Page</a>
+      <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+    </nav>
+  </div>
+</header>
+{% else %}
+<header class="masthead mb-auto">
+  <div class="inner">
+    <h3 class="masthead-brand">Quote Of The Day</h3>
+    <nav class="nav nav-masthead justify-content-center">
+      <a class="nav-link active" href="{% url 'home' %}">Home</a>
+      <a class="nav-link" href="{% url 'user-add' %}">Sign Up</a>
+      <a class="nav-link" href="{% url 'login' %}">Login</a>
+    </nav>
+  </div>
+</header>
+{% endif %}
+
+
+{% endblock header %}
+
+{% block content %}
+<h1>Contact Form</h1>
+<p>If you are having an issue with the service or have any comments that you would like us to know,
+    fill out the contact form below and someone will respond shortly.
+</p>
+
+
+
+
+<form action="{% url 'contactform' %}" method="post">
+    {% csrf_token %}
+    <table>{{ form.as_table }}</table>
+    
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+
+<br>
+
+{% for message in messages %}
+<div class="alert alert-info" role="alert" id="test">
+    <li> {{ message }} </li>
+</div>
+
+{% endfor %}
+
+{% endblock %}
