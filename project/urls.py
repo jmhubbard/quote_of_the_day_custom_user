@@ -24,6 +24,7 @@ from main.views import (
     CustomPasswordResetCompleteView, UserLogoutView, CustomPasswordChangeView, CustomPasswordChangeDoneView)
 
 from django.contrib.auth import views as auth_views
+from emails.views import ContactView
 
 urlpatterns = [
     path('admin/', admin.site.urls), #admin page
@@ -40,6 +41,7 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', CustomPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset_password_complete/', CustomPasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('change_password/', CustomPasswordChangeView.as_view(), name='password_change'),
-    path('change_password_done/', CustomPasswordChangeDoneView.as_view(), name='password_change_done')
+    path('change_password_done/', CustomPasswordChangeDoneView.as_view(), name='password_change_done'),
 
+    path('contactform', ContactView.as_view(), name='contactform'),
 ]
