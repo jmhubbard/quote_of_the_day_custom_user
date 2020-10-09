@@ -1,18 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block header %}
-<header class="masthead mb-auto">
-    <div class="inner">
-      <h3 class="masthead-brand">Quote Of The Day</h3>
-      <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="{% url 'account_page' %}">Account Page</a>
-        <a class="nav-link" href="{% url 'logout'%}">Logout</a>
-      </nav>
-    </div>
-  </header>
-{% endblock header %}
-
 {% block content %}
 
 <h1>Quote Subscriptions</h1>
