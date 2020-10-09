@@ -15,19 +15,14 @@ class ContactForm(forms.Form):
     subject = forms.ChoiceField(choices= subjectchoices)
     message = forms.CharField(widget=forms.Textarea)
     user_email_address = forms.EmailField()
-    cc_myself = forms.BooleanField(required=False)
     
     def send_message(self):
         subject = self.cleaned_data['subject']
         message = self.cleaned_data['message']
         useremail = self.cleaned_data['user_email_address']
-        cc_myself = self.cleaned_data['cc_myself']
 
         recipient_list = [os.getenv("EMAIL_HOST_USER")]
         
-        if cc_myself:
-            recipient_list.append(useremail)
-
         mailmessage = f'Sender: {useremail}\nMessage: {message}'
 
         send_mail(
