@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-color: cadetblue;">
+    <table width="100%" style="max-width: 600px;">
+        <tr>
+            <td style="font-family: 'Trebuchet MS', sans-serif; font-size: 17px; color: #333333; padding-top: 10px; padding-bottom: 10px;">"{{ quote.text }}"</td>
+        </tr>
+        <tr>
+            <td style="font-family: 'Trebuchet MS', sans-serif; font-size: 17px; color: #333333; padding-top: 10px; padding-bottom: 10px;"><strong>{{ quote.speaker }}</strong></td>
+        </tr>
+        <tr>
+            <td style="font-family: 'Trebuchet MS', sans-serif; font-size: 17px; color: #333333; padding-top: 10px; padding-bottom: 10px;"><em>{{ quote.episode.show.name }}</em></td>
+        </tr>
+        <tr>
+            <td style="font-family: 'Trebuchet MS', sans-serif; font-size: 17px; color: #333333; padding-top: 10px; padding-bottom: 10px;">{{ quote.episode.season }}</td>
+        </tr>
+        <tr>
+            <td style="font-family: 'Trebuchet MS', sans-serif; font-size: 17px; color: #333333; padding-top: 10px; padding-bottom: 10px;">{{ quote.episode.name }}</td>
+        </tr>
+        <tr>
+            <td style="font-family: 'Trebuchet MS', sans-serif; font-size: 17px; color: #333333; padding-top: 10px; padding-bottom: 10px;">To update your current subscription preferences or to stop getting hilarious
+                    quotes every morning <a href="{{unsubscribe_uri}}">click here</a></td>
+        </tr>
+    </table>
+</body>
+</html>
