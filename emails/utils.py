@@ -51,7 +51,7 @@ def email_daily_quote(quote, user):
     message_text = render_to_string("emails/email.txt", context=context)
     message_html = render_to_string("emails/email.html", context=context)
     return send_mail(
-        "Quote Of The Day - BETA",
+        "Quote Of The Day",
         message_text,
         os.getenv("EMAIL_HOST_USER"),
         [user],
