@@ -40,6 +40,8 @@ class Command(BaseCommand):
                 users_last_email = EmailTracker.objects.get(user = user)
                 #Will send a quote if the person hasn't recived one yet. This ensures that they only recive one quote and not one for every show they are subscribed to
                 if users_last_email.last_quote_email.date() != today_date:
-                    email_daily_quote(quote_email, user.email)
+                    # email_daily_quote(quote_email, user.email)
+                    email_daily_quote(random_quote, user.email)
+
                     users_last_email.last_quote_email = datetime.now()
                     users_last_email.save()
