@@ -30,7 +30,7 @@ class Command(BaseCommand):
         #For each show in show_list, all quotes for that show are filtered from all quotes, and one is choicen at random.
         for show in show_list:
             show_object = Show.objects.get(name = show)
-            if show_object.status == 2:
+            if show_object.category == 2:
                 show_quotes = Quote.objects.filter(episode__show__name = show)
                 random_quote = random.choice(show_quotes)
                 #Users are filtred by those that are subscribed to the current show.
@@ -46,7 +46,7 @@ class Command(BaseCommand):
 
                         users_last_email.last_quote_email = datetime.now()
                         users_last_email.save()
-            elif show_object.status == 1:
+            elif show_object.category == 1:
                 show_quotes = Quote.objects.filter(speaker__show__name = show)
                 random_quote = random.choice(show_quotes)
                 current_subscribers = User.objects.filter(subscription__show__name = show, subscription__status = 1)
