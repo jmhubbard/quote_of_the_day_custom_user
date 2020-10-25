@@ -15,7 +15,7 @@ class Show(models.Model):
     )
     name = models.CharField(max_length=255, unique=True)
     subscribers = models.ManyToManyField('users.User', through=Subscription)
-    status = models.IntegerField(
+    category = models.IntegerField(
         choices = TYPE_CHOICES,
         default = TYPE_CHOICE_UNKNOWN,
     ) 
