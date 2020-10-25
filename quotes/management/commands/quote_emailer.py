@@ -58,3 +58,6 @@ class Command(BaseCommand):
                     if users_last_email.last_quote_email.date() != today_date:
                         # email_daily_tv_quote(quote_email, user.email)
                         email_daily_movie_quote(random_quote, user.email)
+                        
+                        users_last_email.last_quote_email = datetime.now()
+                        users_last_email.save()
