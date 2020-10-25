@@ -37,7 +37,7 @@ def email_test(user, message):
         fail_silently=False,
 )
 
-def email_daily_quote(quote, user):
+def email_daily_tv_quote(quote, user):
     #Gets the current domain name
     domain = Site.objects.get_current().domain
     # reverse a url in a view to get the path after the domain
