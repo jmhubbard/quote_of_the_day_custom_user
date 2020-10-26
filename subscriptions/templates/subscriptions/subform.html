@@ -5,18 +5,36 @@
 
 <h1>Quote Subscriptions</h1>
 <div class="form-group">
-    <table class= "table">
-        <th>Show</th>
-        <th>Status</th>
-        <th>Edit</th>
+    <table class= "table table-bordered">
+        <th style="font-size: 30px; font-style: italic">Movie Title</th>
+        <th style="font-size: 30px; font-style: italic">Status</th>
+        <th style="font-size: 30px; font-style: italic">Edit</th>
         {% for i in subscriptions %}
+            {% if i.show.category == 1 %}
         <tr>
             <td>{{ i.show }}</td>
             <td>{{ i.get_status_display }}</td>
             <td><a href ="{% url 'subscription-update' i.id %}" class="btn btn-info btn-sm">Edit</a></td>
         </tr>
+            {% endif %}
         {% endfor %}
-
+    </table>
+</div>
+<br>
+<div class="form-group">
+    <table class= "table table-bordered">
+        <th style="font-size: 30px; font-style: italic">TV Show Title</th>
+        <th style="font-size: 30px; font-style: italic">Status</th>
+        <th style="font-size: 30px; font-style: italic">Edit</th>
+        {% for i in subscriptions %}
+            {% if i.show.category == 2 %}
+        <tr>
+            <td>{{ i.show }}</td>
+            <td>{{ i.get_status_display }}</td>
+            <td><a href ="{% url 'subscription-update' i.id %}" class="btn btn-info btn-sm">Edit</a></td>
+        </tr>
+            {% endif %}
+        {% endfor %}
     </table>
 </div>
 
