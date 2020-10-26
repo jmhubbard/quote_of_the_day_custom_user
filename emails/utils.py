@@ -37,7 +37,7 @@ def email_test(user, message):
         fail_silently=False,
 )
 
-def email_daily_quote(quote, user):
+def email_daily_tv_quote(quote, user):
     #Gets the current domain name
     domain = Site.objects.get_current().domain
     # reverse a url in a view to get the path after the domain
@@ -48,8 +48,30 @@ def email_daily_quote(quote, user):
         "unsubscribe_uri": url,
         "quote": quote,
     }
-    message_text = render_to_string("emails/email.txt", context=context)
-    message_html = render_to_string("emails/email.html", context=context)
+    message_text = render_to_string("emails/tv_email.txt", context=context)
+    message_html = render_to_string("emails/tv_email.html", context=context)
+    return send_mail(
+        "Quote Of The Day",
+        message_text,
+        os.getenv("EMAIL_HOST_USER"),
+        [user],
+        fail_silently=False,
+        html_message=message_html,
+    )
+
+def email_daily_movie_quote(quote, user):
+    #Gets the current domain name
+    domain = Site.objects.get_current().domain
+    # reverse a url in a view to get the path after the domain
+    path = reverse('login')
+    url = 'http://{domain}{path}'.format(domain=domain, path=path)
+
+    context = {
+        "unsubscribe_uri": url,
+        "quote": quote,
+    }
+    message_text = render_to_string("emails/movie_email.txt", context=context)
+    message_html = render_to_string("emails/movie_email.html", context=context)
     return send_mail(
         "Quote Of The Day",
         message_text,

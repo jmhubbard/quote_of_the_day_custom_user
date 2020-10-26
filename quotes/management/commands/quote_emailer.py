@@ -7,7 +7,7 @@ import random
 from emails.utils import email_test
 from emails.models import EmailTracker
 from datetime import date, timedelta, datetime
-from emails.utils import email_daily_quote
+from emails.utils import email_daily_tv_quote, email_daily_movie_quote
 
 from django.db import IntegrityError
 
@@ -29,19 +29,35 @@ class Command(BaseCommand):
 
         #For each show in show_list, all quotes for that show are filtered from all quotes, and one is choicen at random.
         for show in show_list:
-            show_quotes = Quote.objects.filter(episode__show__name = show)
-            random_quote = random.choice(show_quotes)
-            quote_email = f'"{random_quote.text}"\n-{random_quote.speaker}\t{random_quote.episode.show.name}\tSeason: {random_quote.episode.season}\t{random_quote.episode.name}'
-            #Users are filtred by those that are subscribed to the current show.
-            current_subscribers = User.objects.filter(subscription__show__name = show, subscription__status = 1)
-            for user in current_subscribers:
-                today_date = date.today()
-                #Get the date/time of the users last quote email sent through quote_emailer
-                users_last_email = EmailTracker.objects.get(user = user)
-                #Will send a quote if the person hasn't recived one yet. This ensures that they only recive one quote and not one for every show they are subscribed to
-                if users_last_email.last_quote_email.date() != today_date:
-                    # email_daily_quote(quote_email, user.email)
-                    email_daily_quote(random_quote, user.email)
+            show_object = Show.objects.get(name = show)
+            if show_object.category == 2:
+                show_quotes = Quote.objects.filter(episode__show__name = show)
+                random_quote = random.choice(show_quotes)
+                #Users are filtred by those that are subscribed to the current show.
+                current_subscribers = User.objects.filter(subscription__show__name = show, subscription__status = 1)
+                for user in current_subscribers:
+                    today_date = date.today()
+                    #Get the date/time of the users last quote email sent through quote_emailer
+                    users_last_email = EmailTracker.objects.get(user = user)
+                    #Will send a quote if the person hasn't recived one yet. This ensures that they only recive one quote and not one for every show they are subscribed to
+                    if users_last_email.last_quote_email.date() != today_date:
+                        # email_daily_tv_quote(quote_email, user.email)
+                        email_daily_tv_quote(random_quote, user.email)
 
-                    users_last_email.last_quote_email = datetime.now()
-                    users_last_email.save()
+                        users_last_email.last_quote_email = datetime.now()
+                        users_last_email.save()
+            elif show_object.category == 1:
+                show_quotes = Quote.objects.filter(speaker__show__name = show)
+                random_quote = random.choice(show_quotes)
+                current_subscribers = User.objects.filter(subscription__show__name = show, subscription__status = 1)
+                for user in current_subscribers:
+                    today_date = date.today()
+                    #Get the date/time of the users last quote email sent through quote_emailer
+                    users_last_email = EmailTracker.objects.get(user = user)
+                    #Will send a quote if the person hasn't recived one yet. This ensures that they only recive one quote and not one for every show they are subscribed to
+                    if users_last_email.last_quote_email.date() != today_date:
+                        # email_daily_tv_quote(quote_email, user.email)
+                        email_daily_movie_quote(random_quote, user.email)
+                        
+                        users_last_email.last_quote_email = datetime.now()
+                        users_last_email.save()

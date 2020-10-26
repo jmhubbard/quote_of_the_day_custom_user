@@ -5,7 +5,7 @@ from shows.models import Show, Episode, Character
 class Quote(models.Model):
     text = models.TextField(unique=True)
     speaker = models.ForeignKey(Character, on_delete=models.CASCADE)
-    episode = models.ForeignKey(Episode, on_delete=models.CASCADE, null=True)
+    episode = models.ForeignKey(Episode, on_delete=models.CASCADE, blank=True, null=True)
     
     def __str__(self):
         return f"{self.text}"
