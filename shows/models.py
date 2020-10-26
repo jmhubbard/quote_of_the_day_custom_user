@@ -39,8 +39,8 @@ class Episode(models.Model):
         return self.name
 
 class Character(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255, blank=True)
+    last_name = models.CharField(max_length=255, blank=True)
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
 
     class Meta:
