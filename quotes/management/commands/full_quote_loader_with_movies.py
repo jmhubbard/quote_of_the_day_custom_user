@@ -74,7 +74,7 @@ class Command(BaseCommand):
                                 quote.save()
                             except IntegrityError:
                                 duplicateQuotes += 1
-                                print(f'duplicate quotes {quote}')
+                                # print(f'duplicate quotes {quote}')
                                 # continue
                             else:
                                 savedQuoteCount += 1
@@ -137,7 +137,7 @@ class Command(BaseCommand):
                                     quote.save()
                                 except IntegrityError:
                                     duplicateQuotes += 1
-                                    print(f'duplicate quotes {quote}')
+                                    # print(f'duplicate quotes {quote}')
 
                                     # continue
                                 else:
