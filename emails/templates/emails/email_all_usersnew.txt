@@ -1,0 +1,10 @@
+Hey all you cool cats and kittens...
+We hope that you are still enjoying all of the hilarious quotes you have been receiving in your email
+        every morning. We have added some new shows and movies that we think you will enjoy, so just click
+        the link below to sign in to your account and to update your subscriptions! Use the comment form on the website
+        if you have any suggestions for movies or TV shows that you would like added. 
+{% for show in showlist %}
+    - {{ show }} 
+{% endfor %}
+
+{{ unsubscribe_uri }}

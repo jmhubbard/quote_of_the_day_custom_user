@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote of the day</title>
+</head>
+<body>
+    <p>We hope that you are enjoying all of the hilarious quotes you have been recieving in your email
+        every morning. We have added some new shows that we think you will enjoy. If any of these sound 
+        interesting just clink the link to sign in to your account and update your subscription preferences.
+    </p>
+    <ul>
+        {% for show in showlist %}
+        <li> {{ show }} </li>
+        {% endfor %}
+    </ul>
+
+    <p> To update your current subscription preferences or to stop getting hilarious
+        quotes every morning <a href="{{unsubscribe_uri}}">Click here</a>
+    </p>
+</body>
+</html>
+
+{% for i in subscriptions %}
+        <tr>
+            <td>{{ i.show }}</td>
+            <td>{{ i.get_status_display }}</td>
+            <td><a href ="{% url 'subscription-update' i.id %}" class="btn btn-info btn-sm">Edit</a></td>
+        </tr>
+        {% endfor %}

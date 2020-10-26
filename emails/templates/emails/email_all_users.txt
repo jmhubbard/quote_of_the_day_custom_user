@@ -1,7 +1,10 @@
-    We hope that you are enjoying all of the hilarious quotes you have been recieving in your email
-every morning. We have added some new shows that we think you will enjoy. If any of these sound 
-interesting just clink the link to sign in to your account and update your subscription preferences.
+Hey all you cool cats and kittens...
+We hope that you are still enjoying all of the hilarious quotes you have been receiving in your email
+every morning. We just wanted to let you know that we have added some new shows and movies that we think you will enjoy. Check out the list below, and if anything sounds amazing, just click
+the link at the bottom of the page to sign in to your account and to update your subscriptions! Feel free to use the comment form on the website
+if you have any suggestions for movies or TV shows that you would like us to add.
 
+Newly Added Shows:
 {% for show in showlist %}
     - {{ show }} 
 {% endfor %}

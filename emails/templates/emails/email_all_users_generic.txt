@@ -1,0 +1,9 @@
+    We hope that you are enjoying all of the hilarious quotes you have been recieving in your email
+every morning. We have added some new shows that we think you will enjoy. If any of these sound 
+interesting just clink the link to sign in to your account and update your subscription preferences.
+
+{% for show in showlist %}
+    - {{ show }} 
+{% endfor %}
+
+{{ unsubscribe_uri }}

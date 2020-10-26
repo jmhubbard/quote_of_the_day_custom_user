@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote of the day</title>
+</head>
+<body>
+    <p>Hey all you cool cats and kittens...</p> 
+    <p>We hope that you are still enjoying all of the hilarious quotes you have been receiving in your email
+        every morning. We have added some new shows and movies that we think you will enjoy, so just click
+        the link below to sign in to your account and to update your subscriptions! Use the comment form on the website
+        if you have any suggestions for movies or TV shows that you would like added. 
+    </p>
+    <ul>
+        {% for show in showlist %}
+        <li> {{ show }} </li>
+        {% endfor %}
+    </ul>
+
+    <p> To update your current subscription preferences or to stop getting hilarious
+        quotes every morning <a href="{{unsubscribe_uri}}">Click here</a>
+    </p>
+</body>
+</html>
