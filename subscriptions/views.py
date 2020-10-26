@@ -15,8 +15,7 @@ from django.http import Http404
 @login_required()
 def subscription(request):
     current_user = request.user
-    # subscriptions = Subscription.objects.filter(user = current_user)
-    subscriptions = request.user.subscription_set.all()
+    subscriptions = Subscription.objects.filter(user = current_user).order_by('show__name')
     context ={
         'current_user': current_user,
         'subscriptions': subscriptions
