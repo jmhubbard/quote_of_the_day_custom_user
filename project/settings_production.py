@@ -9,7 +9,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['damp-gorge-38877.herokuapp.com', 'quotes.jmhubbard.com']
+ALLOWED_HOSTS = ['damp-gorge-38877.herokuapp.com', 'quotes.jasonhubbard.dev']
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
