@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'quotes',
     'django_extensions',
     'django.contrib.sites',
+    'corsheaders',
 ]
 
 SITE_ID = 1
@@ -53,6 +54,7 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -157,3 +159,6 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = bool(int(os.getenv('EMAIL_USE_TLS', str(int(True)))))
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 
+CORS_ALLOWED_ORIGINS = [
+    "https://app-loader.jasonhubbard.dev/",
+]
