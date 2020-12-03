@@ -160,5 +160,5 @@ EMAIL_USE_TLS = bool(int(os.getenv('EMAIL_USE_TLS', str(int(True)))))
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 
 CORS_ALLOWED_ORIGINS = [
-    "https://app-loader.jasonhubbard.dev/",
+    "https://app-loader.jasonhubbard.dev",
 ]
