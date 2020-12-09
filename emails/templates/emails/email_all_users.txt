@@ -1,8 +1,6 @@
-Hey all you cool cats and kittens...
+Hey everyone!
 We hope that you are still enjoying all of the hilarious quotes you have been receiving in your email
-every morning. We just wanted to let you know that we have added some new shows and movies that we think you will enjoy. Check out the list below, and if anything sounds amazing, just click
-the link at the bottom of the page to sign in to your account and to update your subscriptions! Feel free to use the comment form on the website
-if you have any suggestions for movies or TV shows that you would like us to add.
+There are only 22 days left until this dumpster fire of a year is over, so what better way to celebrate than with some new TV Shows and movies to subscribe to. Check out the list below, and if anything sounds fantastic, just click the link at the bottom of the page to sign in to your account and update your subscriptions! Feel free to use the website's comment form if you have any suggestions for movies or TV shows that you would like us to add.
 
 Newly Added Shows:
 {% for show in showlist %}
